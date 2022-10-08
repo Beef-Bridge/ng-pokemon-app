@@ -8,6 +8,7 @@ import { Pokemon } from './pokemon';
 })
 export class AppComponent implements OnInit {
   pokemonList: Pokemon[] = POKEMONS;
+  pokemonSelected: Pokemon|undefined;
 
   constructor() {
     //this.pokemonList = []; 
@@ -19,9 +20,15 @@ export class AppComponent implements OnInit {
     console.table(this.pokemonList);
   }
 
-  selectPokemon(event: MouseEvent) {
-    const index: number = +(event.target as HTMLInputElement).value; // le "+" permet de convertir le string qui suit en number
-    console.log(`On a cliqué sur le pokémon ${this.pokemonList[index].name}`);
+  selectPokemon(pokemonId: string) {
+    const pokemon: Pokemon|undefined = this.pokemonList.find(pokemon => pokemon.id == +pokemonId);
+    if (pokemon) {
+      console.log(`On a demandé le pokémon ${pokemon.name}`);
+      this.pokemonSelected = pokemon;
+    } else {
+      console.log(`On a demandé un pokémon qui n'existe pas`);
+      this.pokemonSelected = pokemon;      
+    }
   }
 }
  
