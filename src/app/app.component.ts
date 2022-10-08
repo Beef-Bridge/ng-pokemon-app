@@ -17,11 +17,11 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     console.table(this.pokemonList);
-    this.selectPokemon(this.pokemonList[0]);
   }
 
-  selectPokemon(pokemon: Pokemon) {
-    console.log(`On a cliqué sur le pokémon ${pokemon.name}`);
+  selectPokemon(event: MouseEvent) {
+    const index: number = +(event.target as HTMLInputElement).value; // le "+" permet de convertir le string qui suit en number
+    console.log(`On a cliqué sur le pokémon ${this.pokemonList[index].name}`);
   }
 }
  
