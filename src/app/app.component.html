@@ -1,6 +1,9 @@
 <h1>Liste de pokémons</h1>
 <input #input (keyup.enter)="selectPokemon(input.value)" type="number" />
-<p>On a sélectionné le pokémon : {{ pokemonSelected?.name }}</p>
+<p *ngIf="pokemonSelected">
+  On a sélectionné le pokémon : {{ pokemonSelected?.name }}
+</p>
+<p *ngIf="!pokemonSelected">Aucun pokémon n'a été trouvé.</p>
 
 <p>{{ pokemonList[0].name }}</p>
 <p>{{ pokemonList[1].name }}</p>
@@ -14,5 +17,3 @@
 <p>{{ pokemonList[9].name }}</p>
 <p>{{ pokemonList[10].name }}</p>
 <p>{{ pokemonList[11].name }}</p>
-
-détecter l'appuie sur la touche entrée
